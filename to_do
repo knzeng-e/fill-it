@@ -1,0 +1,9 @@
+Aqcuisiton des pieces {done}
+revoir les  conditions de ft_check_l_piece notamment {done}
+Enregistrer les type de chacune des pieces <=> "reconnaissance de formes" {done 07/04/16 4h28}
+creer une MAP de sortie; (ON dispose du nombre n de pieces ++> creer une map de (n * n)?
+Pour chacune des pieces faire
+    :trouver la prochaine place libre dans la MAP
+    :voir si la piece courante peut y entrer
+        => si oui -> l'inserer->tenter l'insertion de la piece suivante
+        => si non passer a la piece suivante->inserer la piece

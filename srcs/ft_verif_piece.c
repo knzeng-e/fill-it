@@ -6,14 +6,13 @@
 /*   By: knzeng-e <knzeng-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/03 01:47:30 by knzeng-e          #+#    #+#             */
-/*   Updated: 2016/04/03 03:55:19 by knzeng-e         ###   ########.fr       */
+/*   Updated: 2016/04/07 04:33:46 by knzeng-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fill_it.h"
-#include <stdio.h>
 
-int	ft_verif_piece(char *piece, t_tetro *display)
+int	ft_verif_piece(char *piece, t_piece *display)
 {
 	int	i;
 	int	j;
@@ -32,13 +31,13 @@ int	ft_verif_piece(char *piece, t_tetro *display)
 			{
 				if (nb == 4)
 					return (INVALID_NB_TETRIMINOS);
-				display[nb].line = i;
-				display[nb++].column = j;
+				display->tetro[nb].line = (i / 5);
+				display->tetro[nb++].column = j;
 			}
 			i++;
 		}
-		if (piece[i++] != '\n' || !ft_check_display(display))
+		if (piece[i++] != '\n')
 			return (INVALID_DESCRIPTION);
 	}
-	return (VALID_DESCRIPTION);
+	return ((nb == 4) && (ft_check_display(display->tetro, display) > 0));
 }
