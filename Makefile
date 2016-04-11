@@ -6,7 +6,7 @@
 #    By: knzeng-e <knzeng-e@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/04/03 01:34:47 by knzeng-e          #+#    #+#              #
-#    Updated: 2016/04/03 01:49:10 by knzeng-e         ###   ########.fr        #
+#    Updated: 2016/04/09 13:07:32 by knzeng-e         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ HEAD = ./includes
 
 CC = gcc
 
-FLAGS = -c -Wall -Werror -Wextra
+FLAGS = -g -c -Wall -Werror -Wextra
 
 OBJ = *.o
 

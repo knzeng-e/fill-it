@@ -1,9 +1,31 @@
 Aqcuisiton des pieces {done}
-revoir les  conditions de ft_check_l_piece notamment {done}
-Enregistrer les type de chacune des pieces <=> "reconnaissance de formes" {done 07/04/16 4h28}
+/**
+ *  ft_check_file : recupere les donnes piece par piece (20 caracteres par piece [4 x 4 par lignes + '\n']
+ *  ft_verif_piece : verifie la validite de la piece lue (caracteres valides et disposition valide)
+ *  ft_check_display : verifie la dispositionet detecte la forme, l'eregistre dans un Tableau de pieces
+ *                  ==> utilise 4 + 1 fonctions: - ft_check_line_and_square
+ *                                           - ft_check_t_piece
+ *                                           - ft_check_l_piece
+ *                                           - ft_check_l_piece2
+ *                                           - ft_check_z_piece
+ *                      $Chacune de ces fonctions verifie si la piece courante a la forme correspondante
+ **/
+
+revoir les  conditions de ft_check_l_piece notamment == {done}
+Enregistrer les type de chacune des pieces <=> "reconnaissance de formes" == {done 07/04/16 4h28}
 creer une MAP de sortie; (ON dispose du nombre n de pieces ++> creer une map de (n * n)?
 Pour chacune des pieces faire
-    :trouver la prochaine place libre dans la MAP
-    :voir si la piece courante peut y entrer
-        => si oui -> l'inserer->tenter l'insertion de la piece suivante
-        => si non passer a la piece suivante->inserer la piece
+    step 1: Trouver la prochaine place libre dans la MAP
+    step 2: Voir si la piece courante peut y entrer
+        step 2.1  => si oui
+                            -> l'inserer
+                            -> Passer a la piece suivante
+                            -> Back to step 1
+        step 2.2 => si non:
+                            -> verifier si on peut placer la piece precedente a la prochaine position libre
+                                            si oui:
+                                                    On insere la piece precedente ici;
+                                                    On tente d'inserer la piece suivante;
+                                            si non:
+                                                    On agrandit la map
+                                                    Back to step 1

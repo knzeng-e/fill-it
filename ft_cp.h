@@ -6,7 +6,7 @@
 /*   By: knzeng-e <knzeng-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/02 21:40:40 by knzeng-e          #+#    #+#             */
-/*   Updated: 2016/04/11 06:22:45 by knzeng-e         ###   ########.fr       */
+/*   Updated: 2016/04/10 02:06:50 by knzeng-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
-# include <string.h>
+
 # define NB_CARAC_IN_PIECE 20
 # define GET_PIECE(x, t) read(x, t, NB_CARAC_IN_PIECE)
 # define READ_NL(x, t) read(x, t, 1)
@@ -75,7 +75,6 @@ typedef struct		s_piece
 typedef struct		s_map
 {
 	int				size;
-	int				nb_pieces;
 	int				clear;
 	char			**tab;
 	char			*c;
@@ -89,25 +88,6 @@ int					ft_check_l_piece(t_tetro *tetro, t_piece *piece);
 int					ft_check_l_piece2(t_tetro *tetro, t_piece *piece);
 int					ft_check_t_piece(t_tetro *tetro, t_piece *piece);
 int					ft_check_z_piece(t_tetro *tetro, t_piece *piece);
-int					ft_insert_square(t_map *map, int line, int col);
-int					ft_insert_vertic_line(t_map *map, int line, int col);
-int					ft_insert_horiz_line(t_map *map, int line, int col);
-int					ft_insert_lvertic_up_left(t_map *map, int line, int col);
-int					ft_insert_lvertic_down_left(t_map *map, int line, int col);
-int					ft_insert_lvertic_down_right(t_map *map, int line, int col);
-int					ft_insert_lvertic_up_right(t_map *map, int line, int col);
-int					ft_insert_lhoriz_down_right(t_map *map, int line, int col);
-int					ft_insert_lhoriz_down_left(t_map *map, int line, int col);
-int					ft_insert_lhoriz_up_right(t_map *map, int line, int col);
-int					ft_insert_lhoriz_up_left(t_map *map, int line, int col);
-int					ft_insert_zhoriz_right(t_map *map, int line, int col);
-int					ft_insert_zhoriz_left(t_map *map, int line, int col);
-int					ft_insert_zvertic_left(t_map *map, int line, int col);
-int					ft_insert_zvertic_right(t_map *map, int line, int col);
-int					ft_insert_t_up(t_map *map, int line, int col);
-int					ft_insert_t_right(t_map *map, int line, int col);
-int					ft_insert_t_down(t_map *map, int line, int col);
-int					ft_insert_t_left(t_map *map, int line, int col);
 int					ft_clear_square(t_map *map, int line, int col);
 int					ft_clear_vertic_line(t_map *map, int line, int col);
 int					ft_clear_horiz_line(t_map *map, int line, int col);
@@ -130,7 +110,7 @@ int					ft_clear_t_left(t_map *map, int line, int col);
 int					ft_put_in_map(int line, int column, t_piece *piece, \
 		t_map *map);
 int					ft_init_map(t_map *map, int size_map, char c);
-int					insert(t_piece *piece, t_map *map, int *current_pos);
+int					insert(t_piece *piece, t_map *map, int pos);
 t_map				*ft_resize_map(t_map *old);
 void				ft_print_map(t_map *map);
 //int					(*ft_put_forme)(t_forme, t_map *, int, int)[17];

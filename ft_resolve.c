@@ -6,7 +6,7 @@
 /*   By: knzeng-e <knzeng-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 05:17:21 by knzeng-e          #+#    #+#             */
-/*   Updated: 2016/04/07 06:14:31 by knzeng-e         ###   ########.fr       */
+/*   Updated: 2016/04/08 11:05:35 by knzeng-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ char	*ft_resolve(t_piece *pieces, int *nb_pieces, char *map)
 	i = 0;
 	if (i < *nb_pieces)
 	{
-
 	}
 	return (map);
 }
