@@ -6,7 +6,7 @@
 /*   By: knzeng-e <knzeng-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/08 11:07:05 by knzeng-e          #+#    #+#             */
-/*   Updated: 2016/04/11 11:32:11 by knzeng-e         ###   ########.fr       */
+/*   Updated: 2016/04/11 15:20:10 by knzeng-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,10 +98,10 @@ int		ft_get_next_position(t_piece *pieces, t_map *map, int *line, int *column)
 	int	i;
 	int	j;
 
-	i = 0;
+	i = *line;
 	while (i < map->size)
 	{
-		j = 0;
+		j = *column;
 		while (j < map->size)
 		{
 			if (ft_put_in_map(i, j, pieces, map))
@@ -152,14 +152,18 @@ int		insert(t_piece *piece, t_map *map, int *current_piece)
 			}
 			else
 			{
-				printf("\n\tVal before c = %c\n\ti = %d, j = %d\n\tPIECE A KILL >> %d", *(map->c), i, j, piece->forme);
-				map->clear = 1;
-				*current_piece = *current_piece - 1;
-				ft_put_in_map(map->last_i, map->last_j, --piece, map);
-				//insert(piece, map, current_piece);
-				printf("\n\tVal after c = %c\n\ti = %d, j = %d", *(map->c), map->last_i, map->last_j);
-				ft_print_map(map);
-
+				{
+					printf("\n\tVal before c = %c\n\ti = %d, j = %d\n\tPIECE A KILL >> %d", *(map->c), i, j, piece->forme);
+					map->clear = 1;
+					*current_piece = *current_piece - 1;
+					ft_put_in_map(map->last_i, map->last_j, --piece, map);
+					printf("\n\tVal after c = %c\n\ti = %d, j = %d", *(map->c), map->last_i, map->last_j);
+					ft_print_map(map);
+				if ((posi = ft_get_next_position((piece), map, &i, &j) != -1))
+				insert(piece, map, current_piece);
+				else
+					insert(--piece, map, &(*current_piece--));
+				}
 			}
 		}
 
@@ -201,7 +205,7 @@ int		insert(t_piece *piece, t_map *map, int *current_piece)
 		}*/
 
 		printf("\nout_of_while,i = %d, j = %d, piece = %d, map->size = %d", i, j, piece->forme, map->size);
-		}
+	}
 	printf("\nSortie");
 	return (1);
 }
