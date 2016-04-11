@@ -6,7 +6,7 @@
 /*   By: knzeng-e <knzeng-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/08 11:07:05 by knzeng-e          #+#    #+#             */
-/*   Updated: 2016/04/11 09:08:54 by knzeng-e         ###   ########.fr       */
+/*   Updated: 2016/04/11 11:32:11 by knzeng-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,10 @@ int		ft_put_in_map(int line, int column, t_piece *piece, t_map *map)
 	}
 	else
 	{
+
+		printf("\nVal c = %c", *(map->c));
 		(*map->c)--;
+		printf("\nVal c = %c", *(map->c));
 		f[0] = &ft_clear_square;
 		f[1] = &ft_clear_horiz_line;
 		f[2] = &ft_clear_vertic_line;
@@ -125,61 +128,80 @@ int		insert(t_piece *piece, t_map *map, int *current_piece)
 	j = 0;
 	if (piece == NULL)
 		return (0);
-	while (i < map->size)
+	/** inserer la piece courante */
+	printf("\nPiece_courante (current_piece >> %d <<)", *current_piece);
+	while (*current_piece != map->nb_pieces)
 	{
-		j = 0;
-		printf("\nCurrr-Pir ==> %d", *current_piece);
-		while (j < map->size)
+		if ((posi = ft_get_next_position(piece, map, &i, &j) != -1))
 		{
+			map->last_i = i;
+			map->last_j = j;
+			ft_print_map(map);
+			printf("\nPOSI = %d", posi);
+			*current_piece = *current_piece + 1;
+			insert(++piece, map, current_piece);
+		}
+		else
+		{
+			if (*current_piece == 0)
+			{
+				printf("\nVal i = %d, val j = %d", i, j);
+				map = ft_resize_map(map);
+				ft_print_map(map);
+				printf("\nVal i = %d, val j = %d", i, j);
+			}
+			else
+			{
+				printf("\n\tVal before c = %c\n\ti = %d, j = %d\n\tPIECE A KILL >> %d", *(map->c), i, j, piece->forme);
+				map->clear = 1;
+				*current_piece = *current_piece - 1;
+				ft_put_in_map(map->last_i, map->last_j, --piece, map);
+				//insert(piece, map, current_piece);
+				printf("\n\tVal after c = %c\n\ti = %d, j = %d", *(map->c), map->last_i, map->last_j);
+				ft_print_map(map);
+
+			}
+		}
+
+
+
+
+
+
+
+		/*	while (i < map->size)
+			{
+			j = 0;
+			printf("\nCurrr-Pir ==> %d", *current_piece);
+			while (j < map->size)
+			{
+			printf("\nCurrr-Pie ==> %d", *current_piece);
 			if ((posi = ft_put_in_map(i, j, piece, map)))
 			{
-				printf("\ni = %d, j = %d, piece = %d, map->size = %d, current_piece = %d", i, j, piece->forme, map->size, *current_piece);
-				ft_print_map(map);
-				*current_piece = *current_piece + 1;
-				insert(piece + (*current_piece), map, current_piece);
-			}
-			else if (*current_piece > 0)
-			{
-				printf("\nIN_ELSE");
-				map->clear = 1;
-				ft_put_in_map(i, j, piece, map);
-				(*current_piece)--;
-				insert((piece + *current_piece), map, current_piece);
-				ft_put_in_map(i, j, piece, map);
-			}
-			j++;
+			printf("\ni = %d, j = %d, piece = %d, map->size = %d, current_piece = %d", i, j, piece->forme, map->size, *current_piece);
+			ft_print_map(map);
+		 *current_piece = *current_piece + 1;
+		 insert(piece + (*current_piece), map, current_piece);
+		 }
+		 else if (*current_piece > 0)
+		 {
+		 printf("\nPosition_to_clear ==> i = %d, j = %d", i , j);
+		 map->clear = 1;
+		 ft_put_in_map(i, j, piece, map);
+		//(*current_piece)--;
+		insert((piece + (*current_piece - 1)), map, current_piece);
+		ft_put_in_map(i, j, piece, map);
+		//	map = ft_resize_map(map);
+		ft_print_map(map);
+
+		}
+		j++;
 		}
 		i++;
-	}
+		}*/
 
-				printf("\nout_of_while,i = %d, j = %d, piece = %d, map->size = %d", i, j, piece->forme, map->size);
-	/*if ((posi = ft_get_next_position((piece), map, &i, &j)) == -1) // si la piece ne peut etre inseree
-	{
-		printf("\nInsertion de %d impossible, piece courante == %d", (*piece).forme, *current_piece);
-		//if ((*current_piece)-- == 0)
-		//{
-			posi = ft_get_next_position((piece + (*current_piece)), map, &i, &j);
-			map->clear = 1;
-			ft_put_in_map(i, j, piece, map);
-
-		printf("\nRESIZING");
-		map = ft_resize_map(map);
-		ft_print_map(map);
-		//	}
-
-		return (0);
-	}
-	else
-	{
-		printf("\nAPPEL <> Current_piece = %d", *current_piece);
-		ft_print_map(map);
-		(*current_piece)++;
-		if (*current_piece > map->nb_pieces)
-			return (1);
-		else
-			insert(piece + *current_piece, map, current_piece);
-
-	}*/
+		printf("\nout_of_while,i = %d, j = %d, piece = %d, map->size = %d", i, j, piece->forme, map->size);
+		}
 	printf("\nSortie");
 	return (1);
 }

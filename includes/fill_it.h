@@ -6,7 +6,7 @@
 /*   By: knzeng-e <knzeng-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/02 21:40:40 by knzeng-e          #+#    #+#             */
-/*   Updated: 2016/04/11 06:22:45 by knzeng-e         ###   ########.fr       */
+/*   Updated: 2016/04/11 11:05:36 by knzeng-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef struct		s_tetro
 
 typedef struct		s_piece
 {
+	//choper la previous position
 	t_tetro			tetro[4];
 	t_forme			forme;
 	int				is_inserted;
@@ -75,6 +76,8 @@ typedef struct		s_piece
 typedef struct		s_map
 {
 	int				size;
+	int				last_i;
+	int				last_j;
 	int				nb_pieces;
 	int				clear;
 	char			**tab;

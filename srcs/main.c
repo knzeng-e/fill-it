@@ -6,7 +6,7 @@
 /*   By: knzeng-e <knzeng-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/03 01:43:20 by knzeng-e          #+#    #+#             */
-/*   Updated: 2016/04/11 06:27:05 by knzeng-e         ###   ########.fr       */
+/*   Updated: 2016/04/11 11:21:27 by knzeng-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int		main(int ac, char **av)
 				ft_print_map(map);*/
 
 			insert(pieces, map, pos);
-			ft_print_map(map);
+			//ft_print_map(map);
 		}
 		else
 			printf("error");
