@@ -6,7 +6,7 @@
 /*   By: knzeng-e <knzeng-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/03 01:43:20 by knzeng-e          #+#    #+#             */
-/*   Updated: 2016/04/11 11:21:27 by knzeng-e         ###   ########.fr       */
+/*   Updated: 2016/04/12 21:29:58 by knzeng-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_print_map(t_map *map)
 	printf("\n");
 }
 
-int		ft_init_map(t_map *map, int size_map, char c)
+int		ft_init_map(t_map *map, int size_map, char c, int begin_line, int begin_column)
 {
 	int	i;
 	int	j;
@@ -32,6 +32,8 @@ int		ft_init_map(t_map *map, int size_map, char c)
 	*(map->c) = c;
 	map->size = size_map;
 	map->clear = 0;
+	map->begin_line = begin_line;
+	map->begin_column = begin_column;
 	if (!(map->tab = (char **)malloc(sizeof(char *) * map->size)))
 		return (ERROR_MALLOC);
 	i = 0;
@@ -67,7 +69,7 @@ int		main(int ac, char **av)
 					|| !(pos = (int *)malloc(sizeof(int))))
 				return (ERROR_MALLOC);
 			*pos = 0;
-			if (ft_init_map(map, 4, 'A') < 0)
+			if (ft_init_map(map, 4, 'A', 0, 0) < 0)
 			{
 				free(map);
 				return (ERROR_MALLOC);

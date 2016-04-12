@@ -6,7 +6,7 @@
 /*   By: knzeng-e <knzeng-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/08 18:20:21 by knzeng-e          #+#    #+#             */
-/*   Updated: 2016/04/10 01:31:11 by knzeng-e         ###   ########.fr       */
+/*   Updated: 2016/04/12 21:01:57 by knzeng-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_insert_square(t_map *map, int line, int col)
 {
 	if ((line + 1 >= map->size) || (col + 1 >= map->size))
 		return (0);
-	if ((map->tab[line + 1][col] != '.') || (map->tab[line][col + 1] != '.') ||\
+	if ((map->tab[line][col] != '.') || (map->tab[line + 1][col] != '.') || (map->tab[line][col + 1] != '.') ||\
 			(map->tab[line + 1][col + 1]) != '.')
 		return (0);
 	map->tab[line][col] =  *(map->c);
@@ -80,7 +80,7 @@ int	ft_insert_lvertic_up_left(t_map *map, int line, int col)
 	if ((col - 1 < 0) || (line + 1 >= map->size) || \
 			(line + 2 >= map->size))
 		return (0);
-	if ((map->tab[line + 1][col] != '.') || (map->tab[line + 2][col] != '.') \
+	if ((map->tab[line][col] != '.') || (map->tab[line + 1][col] != '.') || (map->tab[line + 2][col] != '.') \
 			|| (map->tab[line + 2][col - 1] != '.'))
 		return(0);
 	map->tab[line][col] = *(map->c);
@@ -96,7 +96,7 @@ int	ft_insert_lvertic_down_left(t_map *map, int line, int col)
 	if ((col + 1 >= map->size) || (line + 1 >= map->size) || \
 			(line + 2 >= map->size))
 		return (0);
-	if ((map->tab[line][col + 1] != '.') || (map->tab[line + 1][col + 1] != '.') \
+	if ((map->tab[line][col] != '.') || (map->tab[line][col + 1] != '.') || (map->tab[line + 1][col + 1] != '.') \
 			|| (map->tab[line + 2][col + 1] != '.'))
 		return(0);
 	map->tab[line][col] = *(map->c);
@@ -112,7 +112,7 @@ int	ft_insert_lvertic_down_right(t_map *map, int line, int col)
 	if ((col + 1 >= map->size) || (line + 1 >= map->size) || \
 			(line + 2 >= map->size))
 		return (0);
-	if ((map->tab[line][col + 1] != '.') || (map->tab[line + 1][col] != '.') \
+	if ((map->tab[line][col] != '.') || (map->tab[line][col + 1] != '.') || (map->tab[line + 1][col] != '.') \
 			|| (map->tab[line + 2][col] != '.'))
 		return(0);
 	map->tab[line][col] = *(map->c);
@@ -128,7 +128,7 @@ int	ft_insert_lvertic_up_right(t_map *map, int line, int col)
 	if ((col + 1 >= map->size) || (line + 1 >= map->size) || \
 			(line + 2 >= map->size))
 		return (0);
-	if ((map->tab[line + 1][col] != '.') || (map->tab[line + 2][col] != '.') \
+	if ((map->tab[line][col] != '.') || (map->tab[line + 1][col] != '.') || (map->tab[line + 2][col] != '.') \
 			|| (map->tab[line + 2][col + 1] != '.'))
 		return(0);
 	map->tab[line][col] = *(map->c);
@@ -144,7 +144,7 @@ int	ft_insert_lhoriz_down_right(t_map *map, int line, int col)
 	if ((col + 1 >= map->size) || (col + 2 >= map->size) || \
 			(line + 1 >= map->size))
 		return (0);
-	if ((map->tab[line + 1][col] != '.') || (map->tab[line][col + 1] != '.') \
+	if ((map->tab[line][col] != '.') || (map->tab[line + 1][col] != '.') || (map->tab[line][col + 1] != '.') \
 			|| (map->tab[line][col + 2] != '.'))
 		return(0);
 	map->tab[line][col] = *(map->c);
@@ -160,7 +160,7 @@ int	ft_insert_lhoriz_down_left(t_map *map, int line, int col)
 	if ((col + 1 >= map->size) || (col + 2 >= map->size) || \
 			(line + 1 >= map->size))
 		return (0);
-	if ((map->tab[line + 1][col + 2] != '.') || (map->tab[line][col + 1] != '.') \
+	if ((map->tab[line][col] != '.') || (map->tab[line + 1][col + 2] != '.') || (map->tab[line][col + 1] != '.') \
 			|| (map->tab[line][col + 2] != '.'))
 		return(0);
 	map->tab[line][col] = *(map->c);
@@ -176,7 +176,7 @@ int	ft_insert_lhoriz_up_right(t_map *map, int line, int col)
 	if ((col + 1 >= map->size) || (col + 2 >= map->size) || \
 			(line + 1 >= map->size))
 		return (0);
-	if ((map->tab[line + 1][col] != '.') || (map->tab[line + 1][col + 1] != '.') \
+	if ((map->tab[line][col] != '.') || (map->tab[line + 1][col] != '.') || (map->tab[line + 1][col + 1] != '.') \
 			|| (map->tab[line + 1][col + 2] != '.'))
 		return(0);
 	map->tab[line][col] = *(map->c);
@@ -192,7 +192,7 @@ int	ft_insert_lhoriz_up_left(t_map *map, int line, int col)
 	if ((col - 1 <= 0) || (col - 2 < 0) || \
 			(line + 1 >= map->size))
 		return (0);
-	if ((map->tab[line + 1][col] != '.') || (map->tab[line + 1][col - 1] != '.') \
+	if ((map->tab[line][col] != '.') || (map->tab[line + 1][col] != '.') || (map->tab[line + 1][col - 1] != '.') \
 			|| (map->tab[line + 1][col - 2] != '.'))
 		return(0);
 	map->tab[line][col] = *(map->c);
@@ -208,7 +208,7 @@ int	ft_insert_zhoriz_right(t_map *map, int line, int col)
 	if ((col + 1 >= map->size) || (col + 2 >= map->size) || \
 			(line + 1 >= map->size))
 		return (0);
-	if ((map->tab[line][col + 1] != '.') || (map->tab[line + 1][col + 1] != '.') \
+	if ((map->tab[line][col] != '.') || (map->tab[line][col + 1] != '.') || (map->tab[line + 1][col + 1] != '.') \
 			|| (map->tab[line + 1][col + 2]) != '.')
 		return (0);
 	map->tab[line][col] = *(map->c);
@@ -224,7 +224,7 @@ int	ft_insert_zhoriz_left(t_map *map, int line, int col)
 	if ((col + 1 >= map->size) || (col - 1 < 0) || \
 			(line + 1 >= map->size))
 		return (0);
-	if ((map->tab[line][col + 1] != '.') || (map->tab[line + 1][col] != '.') \
+	if ((map->tab[line][col] != '.') || (map->tab[line][col + 1] != '.') || (map->tab[line + 1][col] != '.') \
 			|| (map->tab[line + 1][col - 1]) != '.')
 		return (0);
 	map->tab[line][col] = *(map->c);
@@ -240,7 +240,7 @@ int	ft_insert_zvertic_left(t_map *map, int line, int col)
 	if ((col - 1 < 0) || (line + 1 >= map->size) || \
 			(line + 2 >= map->size))
 		return (0);
-	if ((map->tab[line + 1][col - 1] != '.') || (map->tab[line + 1][col] != '.') \
+	if ((map->tab[line][col] != '.') || (map->tab[line + 1][col - 1] != '.') || (map->tab[line + 1][col] != '.') \
 			|| (map->tab[line + 2][col - 1]) != '.')
 		return (0);
 	map->tab[line][col] = *(map->c);
@@ -256,7 +256,7 @@ int	ft_insert_zvertic_right(t_map *map, int line, int col)
 	if ((col + 1 >= map->size) || (line + 1 >= map->size) || \
 			(line + 2 >= map->size))
 		return (0);
-	if ((map->tab[line + 1][col] != '.') || (map->tab[line + 1][col + 1] != '.') \
+	if ((map->tab[line][col] != '.') || (map->tab[line + 1][col] != '.') || (map->tab[line + 1][col + 1] != '.') \
 			|| (map->tab[line + 2][col + 1] != '.'))
 		return (0);
 	map->tab[line][col] = *(map->c);
@@ -271,7 +271,7 @@ int	ft_insert_t_up(t_map *map, int line, int col)
 {
 	if ((col - 1 < 0) || (col + 1 >= map->size) || (line + 1 >= map->size))
 		return (0);
-	if ((map->tab[line  + 1][col - 1] != '.') \
+	if ((map->tab[line][col] != '.') || (map->tab[line  + 1][col - 1] != '.') \
 			|| (map->tab[line + 1][col] != '.') \
 			|| (map->tab[line + 1][col + 1] != '.'))
 		return (0);
@@ -287,7 +287,7 @@ int	ft_insert_t_right(t_map *map, int line, int col)
 {
 	if ((line + 2 >= map->size) || (col + 1 >= map->size) || (line + 1 >= map->size))
 		return (0);
-	if ((map->tab[line  + 1][col] != '.') \
+	if ((map->tab[line][col] != '.') || (map->tab[line  + 1][col] != '.') \
 			|| (map->tab[line + 1][col + 1] != '.') \
 			|| (map->tab[line + 2][col] != '.'))
 		return (0);
@@ -303,7 +303,7 @@ int	ft_insert_t_down(t_map *map, int line, int col)
 {
 	if ((line + 1 >= map->size) || (col + 1 >= map->size) || (col + 2 >= map->size))
 		return (0);
-	if ((map->tab[line][col + 1] != '.') \
+	if ((map->tab[line][col] != '.') || (map->tab[line][col + 1] != '.') \
 			|| (map->tab[line][col + 2] != '.') \
 			|| (map->tab[line + 1][col + 1] != '.'))
 		return (0);
@@ -319,7 +319,7 @@ int	ft_insert_t_left(t_map *map, int line, int col)
 {
 	if ((line + 1 >= map->size) || (col - 1 < 0) || (line + 2 >= map->size))
 		return (0);
-	if ((map->tab[line + 1][col] != '.') \
+	if ((map->tab[line][col] != '.') || (map->tab[line + 1][col] != '.') \
 			|| (map->tab[line + 1][col - 1] != '.') \
 			|| (map->tab[line + 2][col] != '.'))
 		return (0);

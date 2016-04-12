@@ -6,7 +6,7 @@
 /*   By: knzeng-e <knzeng-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/02 21:56:26 by knzeng-e          #+#    #+#             */
-/*   Updated: 2016/04/11 06:11:42 by knzeng-e         ###   ########.fr       */
+/*   Updated: 2016/04/12 20:17:28 by knzeng-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	ft_check_file(char *file, t_piece *pieces)
 		current_piece[lus] = '\0';
 		return (INVALID_DESCRIPTION);
 	}
-	pieces[i].tetro[0].line = -1;
+	pieces[i].forme = END;
 	i = ((close(fd) != -1) ? i : -1);
 	return (i);
 }

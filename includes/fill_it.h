@@ -6,7 +6,7 @@
 /*   By: knzeng-e <knzeng-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/02 21:40:40 by knzeng-e          #+#    #+#             */
-/*   Updated: 2016/04/11 11:05:36 by knzeng-e         ###   ########.fr       */
+/*   Updated: 2016/04/12 21:29:52 by knzeng-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ typedef enum		e_type_piece
 					T_UP,
 					T_RIGHT,
 					T_DOWN,
-					T_LEFT
+					T_LEFT,
+					END
 }					t_forme;
 
 typedef struct		s_tetro
@@ -69,6 +70,8 @@ typedef struct		s_piece
 {
 	//choper la previous position
 	t_tetro			tetro[4];
+	int				x;
+	int				y;
 	t_forme			forme;
 	int				is_inserted;
 }					t_piece;
@@ -76,8 +79,8 @@ typedef struct		s_piece
 typedef struct		s_map
 {
 	int				size;
-	int				last_i;
-	int				last_j;
+	int				begin_line;
+	int				begin_column;
 	int				nb_pieces;
 	int				clear;
 	char			**tab;
@@ -132,7 +135,7 @@ int					ft_clear_t_down(t_map *map, int line, int col);
 int					ft_clear_t_left(t_map *map, int line, int col);
 int					ft_put_in_map(int line, int column, t_piece *piece, \
 		t_map *map);
-int					ft_init_map(t_map *map, int size_map, char c);
+int					ft_init_map(t_map *map, int size_map, char c, int line, int col);
 int					insert(t_piece *piece, t_map *map, int *current_pos);
 t_map				*ft_resize_map(t_map *old);
 void				ft_print_map(t_map *map);
