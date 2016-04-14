@@ -6,7 +6,7 @@
 /*   By: knzeng-e <knzeng-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/03 01:43:20 by knzeng-e          #+#    #+#             */
-/*   Updated: 2016/04/12 21:29:58 by knzeng-e         ###   ########.fr       */
+/*   Updated: 2016/04/14 21:21:46 by knzeng-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ void	ft_print_map(t_map *map)
 
 	i = 0;
 	while (i < map->size)
-		printf("\n%s", map->tab[i++]);
-	printf("\n");
+		printf("%s\n", map->tab[i++]);
 }
 
 int		ft_init_map(t_map *map, int size_map, char c, int begin_line, int begin_column)
@@ -56,6 +55,7 @@ int		main(int ac, char **av)
 {
 	int		nb_pieces;
 	int		*pos;
+	int		ret;
 	t_piece	pieces[MAX_PIECES + 1];
 	t_map	*map;
 
@@ -64,35 +64,24 @@ int		main(int ac, char **av)
 		nb_pieces = ft_check_file(av[1], pieces);
 		if (nb_pieces > 0)
 		{
-			printf("\nVALID FILE\n Nombre de pieces = %d", nb_pieces);
 			if (!(map = (t_map *)malloc(sizeof(t_map))) \
 					|| !(pos = (int *)malloc(sizeof(int))))
 				return (ERROR_MALLOC);
 			*pos = 0;
-			if (ft_init_map(map, 4, 'A', 0, 0) < 0)
+			if (ft_init_map(map, 3, 'A', 0, 0) < 0)
 			{
 				free(map);
 				return (ERROR_MALLOC);
 			}
 			map->nb_pieces = nb_pieces;
+			while (!(ret = insert(pieces, map, pos)))
+				map = ft_resize_map(map);
 			ft_print_map(map);
-			/*	ft_put_in_map(0,1, pieces, map);
-				ft_print_map(map);
-				map->clear = 1;
-				ft_put_in_map(0,1, pieces, map);
-				ft_print_map(map);
-				ft_put_in_map(0,1, pieces, map);
-				ft_print_map(map);*/
-
-			insert(pieces, map, pos);
-			//ft_print_map(map);
 		}
 		else
 			printf("error");
 	}
 	else
-	{
 		printf("error");
-	}
 	return (0);
 }

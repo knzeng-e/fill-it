@@ -6,7 +6,7 @@
 /*   By: knzeng-e <knzeng-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/08 18:20:21 by knzeng-e          #+#    #+#             */
-/*   Updated: 2016/04/12 21:01:57 by knzeng-e         ###   ########.fr       */
+/*   Updated: 2016/04/14 20:50:55 by knzeng-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,7 +203,7 @@ int	ft_insert_lhoriz_up_left(t_map *map, int line, int col)
 	return (1);
 }
 
-int	ft_insert_zhoriz_right(t_map *map, int line, int col)
+int	ft_insert_zhoriz_left(t_map *map, int line, int col)
 {
 	if ((col + 1 >= map->size) || (col + 2 >= map->size) || \
 			(line + 1 >= map->size))
@@ -219,7 +219,7 @@ int	ft_insert_zhoriz_right(t_map *map, int line, int col)
 	return (1);
 }
 
-int	ft_insert_zhoriz_left(t_map *map, int line, int col)
+int	ft_insert_zhoriz_right(t_map *map, int line, int col)
 {
 	if ((col + 1 >= map->size) || (col - 1 < 0) || \
 			(line + 1 >= map->size))
@@ -294,7 +294,7 @@ int	ft_insert_t_right(t_map *map, int line, int col)
 	map->tab[line][col] = *(map->c);
 	map->tab[line + 1][col] = *(map->c);
 	map->tab[line + 1][col + 1] = *(map->c);
-	map->tab[line][col] = *(map->c);
+	map->tab[line + 2][col] = *(map->c);
 	(*map->c)++;
 	return (1);
 }

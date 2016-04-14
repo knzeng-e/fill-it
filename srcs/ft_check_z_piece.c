@@ -6,7 +6,7 @@
 /*   By: knzeng-e <knzeng-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 04:07:17 by knzeng-e          #+#    #+#             */
-/*   Updated: 2016/04/07 04:22:29 by knzeng-e         ###   ########.fr       */
+/*   Updated: 2016/04/14 20:32:33 by knzeng-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	ft_check_un(t_tetro *tetro, t_piece *pieces)
 	if (tetro[3].line != i + 1 || tetro[3].column != j)
 		return (0);
 	pieces->forme = Z_HORIZONTAL_RIGHT;
-	printf("\nZ_HORiz _|>> ==> %d", pieces->forme);
 	return (1);
 }
 
@@ -44,7 +43,6 @@ int	ft_check_deux(t_tetro *tetro, t_piece *pieces)
 	if (tetro[3].line != i + 1 || tetro[3].column != j + 2)
 		return (0);
 	pieces->forme = Z_HORIZONTAL_LEFT;
-	printf("\nZ_HORiz <<-- ==> %d", pieces->forme);
 	return (1);
 }
 
@@ -62,7 +60,6 @@ int	ft_check_trois(t_tetro *tetro, t_piece *pieces)
 	if (tetro[3].line != i + 2 || tetro[3].column != j + 1)
 		return (0);
 	pieces->forme = Z_VERTICAL_RIGHT;
-	printf("\nZ_VERTIC #>> ==> %d", pieces->forme);
 	return (1);
 }
 
@@ -80,7 +77,6 @@ int	ft_check_quatre(t_tetro *tetro, t_piece *pieces)
 	if ((tetro[3].line != i + 2) || (tetro[3].column != j - 1))
 		return (0);
 	pieces->forme = Z_VERTICAL_LEFT;
-	printf("\nZ_VERTIC <<# ==> %d", pieces->forme);
 	return (1);
 }
 

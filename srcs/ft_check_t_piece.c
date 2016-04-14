@@ -6,7 +6,7 @@
 /*   By: knzeng-e <knzeng-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 00:02:30 by knzeng-e          #+#    #+#             */
-/*   Updated: 2016/04/07 04:18:30 by knzeng-e         ###   ########.fr       */
+/*   Updated: 2016/04/14 20:30:41 by knzeng-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int	ft_check_vertical_gauche(t_tetro *tetro, t_piece *pieces)
 	if (tetro[3].line != i + 2 || tetro[3].column !=  j)
 		return (0);
 	pieces->forme = T_LEFT;
-	printf("\nT-VERTICAL GAUCHE ==> %d", pieces->forme);
 	return (1);
 }
 
@@ -46,7 +45,6 @@ int	ft_check_vertical_droit(t_tetro *tetro, t_piece *pieces)
 	if (tetro[3].line != i + 2 || tetro[3].column !=  j)
 		return (0);
 	pieces->forme = T_RIGHT;
-	printf("\nT-VERTIVACL DROIT ==> %d", pieces->forme);
 	return (1);
 }
 
@@ -65,7 +63,6 @@ int	ft_check_up(t_tetro *tetro, t_piece *pieces)
 	if (tetro[3].line != i + 1 || tetro[3].column != j + 1)
 		return (0);
 	pieces->forme = T_UP;
-	printf("\nT-ORIENTE HAUT ==> %d", pieces->forme);
 	return (1);
 }
 
@@ -83,7 +80,6 @@ int	ft_check_down(t_tetro *tetro, t_piece *pieces)
 	if (tetro[3].line != i + 1 || tetro[3].column != j + 1)
 		return (0);
 	pieces->forme = T_DOWN;
-	printf("\nT-ORIENTE BAS ==> %d", pieces->forme);
 	return (1);
 }
 

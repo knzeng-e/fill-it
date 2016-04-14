@@ -6,7 +6,7 @@
 /*   By: knzeng-e <knzeng-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/03 17:31:16 by knzeng-e          #+#    #+#             */
-/*   Updated: 2016/04/07 04:05:28 by knzeng-e         ###   ########.fr       */
+/*   Updated: 2016/04/14 20:29:56 by knzeng-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	ft_check_line_horiz(t_tetro *tetro, t_piece *pieces)
 		if (i != tetro[cpt++].line)
 			return (0);
 	pieces->forme = HORIZONTAL;
-	printf("\nHORIZONTAL ==> %d", pieces->forme);
 	return (1);
 }
 
@@ -38,7 +37,6 @@ int	ft_check_line_vertic(t_tetro *tetro, t_piece *pieces)
 		if (j != tetro[cpt++].column)
 			return (0);
 	pieces->forme = VERTICAL;
-	printf("\nVERTICAL ==> %d", pieces->forme);
 	return (1);
 }
 
@@ -56,7 +54,6 @@ int	ft_check_square(t_tetro *tetro, t_piece *pieces)
 	if ((tetro[3].line != i + 1) || (tetro[3].column != j + 1))
 		return (0);
 	pieces->forme = SQUARE;
-	printf("\nSQUARE ==> %d", pieces->forme);
 	return (1);
 }
 

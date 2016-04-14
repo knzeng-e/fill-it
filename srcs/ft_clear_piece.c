@@ -6,7 +6,7 @@
 /*   By: knzeng-e <knzeng-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/08 18:20:21 by knzeng-e          #+#    #+#             */
-/*   Updated: 2016/04/12 21:07:39 by knzeng-e         ###   ########.fr       */
+/*   Updated: 2016/04/14 20:09:19 by knzeng-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	ft_clear_square(t_map *map, int line, int col)
 {
-	printf("\nCARACTERE A SUPPRIMER ==> %c en ligne = %d, col = %d", *(map->c), line, col);
 	if ((line + 1 >= map->size) || (col + 1 >= map->size))
 		return (0);
 	if ((map->tab[line][col] != *(map->c)) || (map->tab[line + 1][col] != *(map->c)) || (map->tab[line][col + 1] != *(map->c)) ||\
@@ -31,7 +30,6 @@ int	ft_clear_vertic_line(t_map *map, int line, int col)
 {
 	int	i;
 
-	printf("\nCARACTERE A SUPPRIMER ==> %c en ligne = %d, col = %d", *(map->c), line, col);
 	if ((line + 1 >= map->size) || (line + 2 >= map->size) || \
 			(line + 3 >= map->size))
 		return (0);
@@ -55,7 +53,6 @@ int	ft_clear_horiz_line(t_map *map, int line, int col)
 {
 	int	i;
 
-	printf("\nCARACTERE A SUPPRIMER ==> %c en ligne = %d, col = %d", *(map->c), line, col);
 	if ((col + 1 >= map->size) || (col + 2 >= map->size) || \
 			(col + 3 >= map->size))
 		return (0);
@@ -63,10 +60,7 @@ int	ft_clear_horiz_line(t_map *map, int line, int col)
 	while (i < 4)
 	{
 		if (map->tab[line][col + i] != *(map->c))
-		{
-			printf("\nJe ne supprime pas");
 			return (0);
-		}
 		i++;
 	}
 	i = 0;
@@ -75,13 +69,11 @@ int	ft_clear_horiz_line(t_map *map, int line, int col)
 		map->tab[line][col + i] = '.';
 		i++;
 	}
-	printf("\nJ'ai bien supprime");
 	return (1);
 }
 
 int	ft_clear_lvertic_up_left(t_map *map, int line, int col)
 {
-	printf("\nCARACTERE A SUPPRIMER ==> %c en ligne = %d, col = %d", *(map->c), line, col);
 	if ((col - 1 < 0) || (line + 1 >= map->size) || \
 			(line + 2 >= map->size))
 		return (0);
@@ -97,7 +89,6 @@ int	ft_clear_lvertic_up_left(t_map *map, int line, int col)
 
 int	ft_clear_lvertic_down_left(t_map *map, int line, int col)
 {
-	printf("\nCARACTERE A SUPPRIMER ==> %c en ligne = %d, col = %d", *(map->c), line, col);
 	if ((col + 1 >= map->size) || (line + 1 >= map->size) || \
 			(line + 2 >= map->size))
 		return (0);
@@ -113,7 +104,6 @@ int	ft_clear_lvertic_down_left(t_map *map, int line, int col)
 
 int	ft_clear_lvertic_down_right(t_map *map, int line, int col)
 {
-	printf("\nCARACTERE A SUPPRIMER ==> %c en ligne = %d, col = %d", *(map->c), line, col);
 	if ((col + 1 >= map->size) || (line + 1 >= map->size) || \
 			(line + 2 >= map->size))
 		return (0);
@@ -129,7 +119,6 @@ int	ft_clear_lvertic_down_right(t_map *map, int line, int col)
 
 int	ft_clear_lvertic_up_right(t_map *map, int line, int col)
 {
-	printf("\nCARACTERE A SUPPRIMER ==> %c en ligne = %d, col = %d", *(map->c), line, col);
 	if ((col + 1 >= map->size) || (line + 1 >= map->size) || \
 			(line + 2 >= map->size))
 		return (0);
@@ -145,7 +134,6 @@ int	ft_clear_lvertic_up_right(t_map *map, int line, int col)
 
 int	ft_clear_lhoriz_down_right(t_map *map, int line, int col)
 {
-	printf("\nCARACTERE A SUPPRIMER ==> %c en ligne = %d, col = %d", *(map->c), line, col);
 	if ((col + 1 >= map->size) || (col + 2 >= map->size) || \
 			(line + 1 >= map->size))
 		return (0);
@@ -161,7 +149,6 @@ int	ft_clear_lhoriz_down_right(t_map *map, int line, int col)
 
 int	ft_clear_lhoriz_down_left(t_map *map, int line, int col)
 {
-	printf("\nCARACTERE A SUPPRIMER ==> %c en ligne = %d, col = %d", *(map->c), line, col);
 	if ((col + 1 >= map->size) || (col + 2 >= map->size) || \
 			(line + 1 >= map->size))
 		return (0);
@@ -177,7 +164,6 @@ int	ft_clear_lhoriz_down_left(t_map *map, int line, int col)
 
 int	ft_clear_lhoriz_up_right(t_map *map, int line, int col)
 {
-	printf("\nCARACTERE A SUPPRIMER ==> %c en ligne = %d, col = %d", *(map->c), line, col);
 	if ((col + 1 >= map->size) || (col + 2 >= map->size) || \
 			(line + 1 >= map->size))
 		return (0);
@@ -193,7 +179,6 @@ int	ft_clear_lhoriz_up_right(t_map *map, int line, int col)
 
 int	ft_clear_lhoriz_up_left(t_map *map, int line, int col)
 {
-	printf("\nCARACTERE A SUPPRIMER ==> %c en ligne = %d, col = %d", *(map->c), line, col);
 	if ((col - 1 <= 0) || (col - 2 < 0) || \
 			(line + 1 >= map->size))
 		return (0);
@@ -209,7 +194,6 @@ int	ft_clear_lhoriz_up_left(t_map *map, int line, int col)
 
 int	ft_clear_zhoriz_right(t_map *map, int line, int col)
 {
-	printf("\nCARACTERE A SUPPRIMER ==> %c en ligne = %d, col = %d", *(map->c), line, col);
 	if ((col + 1 >= map->size) || (col + 2 >= map->size) || \
 			(line + 1 >= map->size))
 		return (0);
@@ -225,7 +209,6 @@ int	ft_clear_zhoriz_right(t_map *map, int line, int col)
 
 int	ft_clear_zhoriz_left(t_map *map, int line, int col)
 {
-	printf("\nCARACTERE A SUPPRIMER ==> %c en ligne = %d, col = %d", *(map->c), line, col);
 	if ((col + 1 >= map->size) || (col - 1 < 0) || \
 			(line + 1 >= map->size))
 		return (0);
@@ -241,7 +224,6 @@ int	ft_clear_zhoriz_left(t_map *map, int line, int col)
 
 int	ft_clear_zvertic_left(t_map *map, int line, int col)
 {
-	printf("\nCARACTERE A SUPPRIMER ==> %c en ligne = %d, col = %d", *(map->c), line, col);
 	if ((col - 1 < 0) || (line + 1 >= map->size) || \
 			(line + 2 >= map->size))
 		return (0);
@@ -257,7 +239,6 @@ int	ft_clear_zvertic_left(t_map *map, int line, int col)
 
 int	ft_clear_zvertic_right(t_map *map, int line, int col)
 {
-	printf("\nCARACTERE A SUPPRIMER ==> %c en ligne = %d, col = %d", *(map->c), line, col);
 	if ((col + 1 >= map->size) || (line + 1 >= map->size) || \
 			(line + 2 >= map->size))
 		return (0);
@@ -273,7 +254,6 @@ int	ft_clear_zvertic_right(t_map *map, int line, int col)
 
 int	ft_clear_t_up(t_map *map, int line, int col)
 {
-	printf("\nCARACTERE A SUPPRIMER ==> %c en ligne = %d, col = %d", *(map->c), line, col);
 	if ((col - 1 < 0) || (col + 1 >= map->size) || (line + 1 >= map->size))
 		return (0);
 	if ((map->tab[line][col] != *(map->c)) || (map->tab[line  + 1][col - 1] != *(map->c)) \
@@ -289,7 +269,6 @@ int	ft_clear_t_up(t_map *map, int line, int col)
 
 int	ft_clear_t_right(t_map *map, int line, int col)
 {
-	printf("\nCARACTERE A SUPPRIMER ==> %c en ligne = %d, col = %d", *(map->c), line, col);
 	if ((line + 2 >= map->size) || (col + 1 >= map->size) || (line + 1 >= map->size))
 		return (0);
 	if ((map->tab[line][col] != *(map->c)) || (map->tab[line  + 1][col] != *(map->c)) \
@@ -305,7 +284,6 @@ int	ft_clear_t_right(t_map *map, int line, int col)
 
 int	ft_clear_t_down(t_map *map, int line, int col)
 {
-	printf("\nCARACTERE A SUPPRIMER ==> %c en ligne = %d, col = %d", *(map->c), line, col);
 	if ((line + 1 >= map->size) || (col + 1 >= map->size) || (col + 2 >= map->size))
 		return (0);
 	if ((map->tab[line][col] != *(map->c)) || (map->tab[line][col + 1] != *(map->c)) \
@@ -321,7 +299,6 @@ int	ft_clear_t_down(t_map *map, int line, int col)
 
 int	ft_clear_t_left(t_map *map, int line, int col)
 {
-	printf("\nCARACTERE A SUPPRIMER ==> %c en ligne = %d, col = %d", *(map->c), line, col);
 	if ((line + 1 >= map->size) || (col - 1 < 0) || (line + 2 >= map->size))
 		return (0);
 	if ((map->tab[line][col] != *(map->c)) || (map->tab[line + 1][col] != *(map->c)) \

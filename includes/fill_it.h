@@ -6,7 +6,7 @@
 /*   By: knzeng-e <knzeng-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/02 21:40:40 by knzeng-e          #+#    #+#             */
-/*   Updated: 2016/04/12 21:29:52 by knzeng-e         ###   ########.fr       */
+/*   Updated: 2016/04/14 20:29:05 by knzeng-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 # define VALID_DISPLAY 2
 # define INSERT_SUCCESS 3
 # define ERROR_MALLOC -4
+# define GAME_OVER 4
 
 typedef enum		e_type_piece
 {
@@ -133,6 +134,8 @@ int					ft_clear_t_up(t_map *map, int line, int col);
 int					ft_clear_t_right(t_map *map, int line, int col);
 int					ft_clear_t_down(t_map *map, int line, int col);
 int					ft_clear_t_left(t_map *map, int line, int col);
+int					ft_init(t_map *map, int size_map, char c, int begin_line, \
+		int begin_column);
 int					ft_put_in_map(int line, int column, t_piece *piece, \
 		t_map *map);
 int					ft_init_map(t_map *map, int size_map, char c, int line, int col);
