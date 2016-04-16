@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_display.c                                 :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: knzeng-e <knzeng-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/03 03:57:26 by knzeng-e          #+#    #+#             */
-/*   Updated: 2016/04/16 19:24:19 by knzeng-e         ###   ########.fr       */
+/*   Created: 2016/03/21 23:21:18 by knzeng-e          #+#    #+#             */
+/*   Updated: 2016/04/17 01:11:09 by knzeng-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fill_it.h"
 
-int	ft_check_display(t_tetro *tetro, t_piece *pieces)
+size_t		ft_strlen(const char *s)
 {
-	if ((ft_check_line_and_square(tetro, pieces) || \
-				ft_check_t_piece(tetro, pieces) ||\
-				ft_check_l_piece(tetro, pieces) ||\
-				ft_check_z_piece(tetro, pieces) || \
-				ft_check_l_piece2(tetro, pieces)))
-	{
-		pieces->is_inserted = NO;
-		return (VALID_DISPLAY);
-	}
-	return (INVALID_DISPLAY);
+	size_t	i;
+
+	if (!s)
+		return (0);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
+
+void		ft_putstr(char const *s)
+{
+	write(1, s, ft_strlen(s));
 }

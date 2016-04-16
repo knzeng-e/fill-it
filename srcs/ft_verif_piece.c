@@ -6,7 +6,7 @@
 /*   By: knzeng-e <knzeng-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/03 01:47:30 by knzeng-e          #+#    #+#             */
-/*   Updated: 2016/04/14 14:59:15 by knzeng-e         ###   ########.fr       */
+/*   Updated: 2016/04/16 22:52:51 by knzeng-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,29 @@
 
 int	ft_verif_piece(char *piece, t_piece *display)
 {
-	int	i;
-	int	j;
-	int	nb;
+	struct s_params	params;
 
-	i = 0;
-	nb = 0;
-	while (i < 20)
+	params.i = 0;
+	params.cpt = 0;
+	while (params.i < 20)
 	{
-		j = -1;
-		while (++j < 4)
+		params.j = -1;
+		while (++params.j < 4)
 		{
-			if (piece[i] != '#' && piece[i] != '.')
+			if (piece[params.i] != '#' && piece[params.i] != '.')
 				return (INVALID_DESCRIPTION);
-			if (piece[i] == '#')
+			if (piece[params.i] == '#')
 			{
-				if (nb == 4)
+				if (params.cpt == 4)
 					return (INVALID_NB_TETRIMINOS);
-				display->tetro[nb].line = (i / 5);
-				display->tetro[nb++].column = j;
+				display->tetro[params.cpt].line = (params.i / 5);
+				display->tetro[params.cpt++].column = params.j;
 			}
-			i++;
+			params.i++;
 		}
-		if (piece[i++] != '\n')
+		if (piece[params.i++] != '\n')
 			return (INVALID_DESCRIPTION);
 	}
-	return ((nb == 4) && (ft_check_display(display->tetro, display) > 0));
+	return ((params.cpt == 4) \
+			&& (ft_check_display(display->tetro, display) > 0));
 }

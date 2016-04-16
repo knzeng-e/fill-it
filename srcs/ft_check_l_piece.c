@@ -6,7 +6,7 @@
 /*   By: knzeng-e <knzeng-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/03 18:30:02 by knzeng-e          #+#    #+#             */
-/*   Updated: 2016/04/14 20:31:25 by knzeng-e         ###   ########.fr       */
+/*   Updated: 2016/04/16 19:28:27 by knzeng-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,8 @@ int	ft_check_vertic_bas_gauche(t_tetro *tetro, t_piece *pieces)
 
 int	ft_check_l_piece(t_tetro *tetro, t_piece *pieces)
 {
-	return (ft_check_vertic_hgauche(tetro, pieces) || ft_check_vertic_bas_gauche(tetro, pieces) || ft_check_vertic_bdroit(tetro, pieces) || ft_check_vertic_hdroit(tetro, pieces));
+	return (ft_check_vertic_hgauche(tetro, pieces) \
+			|| ft_check_vertic_bas_gauche(tetro, pieces) \
+			|| ft_check_vertic_bdroit(tetro, pieces) \
+			|| ft_check_vertic_hdroit(tetro, pieces));
 }

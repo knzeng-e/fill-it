@@ -6,7 +6,7 @@
 /*   By: knzeng-e <knzeng-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/02 21:40:40 by knzeng-e          #+#    #+#             */
-/*   Updated: 2016/04/16 01:59:49 by knzeng-e         ###   ########.fr       */
+/*   Updated: 2016/04/17 01:10:03 by knzeng-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,8 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
-#include <stdlib.h>
+# include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h>
 # include <string.h>
 # define NB_CARAC_IN_PIECE 20
 # define GET_PIECE(x, t) read(x, t, NB_CARAC_IN_PIECE)
@@ -35,30 +34,32 @@
 # define VALID_DISPLAY 2
 # define INSERT_SUCCESS 3
 # define ERROR_MALLOC -4
+# define ERROR_INIT_MAP -5
+# define INIT_SUCCESS 5
 # define GAME_OVER 4
 
 typedef enum		e_type_piece
 {
-					SQUARE,
-					HORIZONTAL,
-					VERTICAL,
-					L_VERTIC_HAUT_GAUCHE,
-					L_VERTIC_BAS_DROIT,
-					L_VERTIC_BAS_GAUCHE,
-					L_VERTIC_HAUT_DROIT,
-					L_HORIZONTAL_BAS_DROIT,
-					L_HORIZONTAL_BAS_GAUCHE,
-					L_HORIZONTAL_HAUT_DROIT,
-					L_HORIZONTAL_HAUT_GAUCHE,
-					Z_HORIZONTAL_RIGHT,
-					Z_HORIZONTAL_LEFT,
-					Z_VERTICAL_LEFT,
-					Z_VERTICAL_RIGHT,
-					T_UP,
-					T_RIGHT,
-					T_DOWN,
-					T_LEFT,
-					END
+	SQUARE,
+	HORIZONTAL,
+	VERTICAL,
+	L_VERTIC_HAUT_GAUCHE,
+	L_VERTIC_BAS_DROIT,
+	L_VERTIC_BAS_GAUCHE,
+	L_VERTIC_HAUT_DROIT,
+	L_HORIZONTAL_BAS_DROIT,
+	L_HORIZONTAL_BAS_GAUCHE,
+	L_HORIZONTAL_HAUT_DROIT,
+	L_HORIZONTAL_HAUT_GAUCHE,
+	Z_HORIZONTAL_RIGHT,
+	Z_HORIZONTAL_LEFT,
+	Z_VERTICAL_LEFT,
+	Z_VERTICAL_RIGHT,
+	T_UP,
+	T_RIGHT,
+	T_DOWN,
+	T_LEFT,
+	END
 }					t_forme;
 
 typedef struct		s_tetro
@@ -69,7 +70,6 @@ typedef struct		s_tetro
 
 typedef struct		s_piece
 {
-	//choper la previous position
 	t_tetro			tetro[4];
 	int				x;
 	int				y;
@@ -87,6 +87,16 @@ typedef struct		s_map
 	char			**tab;
 	char			*c;
 }					t_map;
+
+typedef struct		s_params
+{
+	int				lus;
+	int				line_at_end;
+	int				cpt;
+	int				i;
+	int				j;
+	int				ret;
+}					t_params;
 
 int					ft_check_file(char *file, t_piece *piece);
 int					ft_verif_piece(char *piece, t_piece *display);
@@ -141,7 +151,14 @@ int					ft_put_in_map(int line, int column, t_piece *piece, \
 int					ft_init_map(t_map *map, int size_map, char c, int
 		nb_pieces);
 int					insert(t_piece *piece, t_map *map, int *current_pos);
+size_t				ft_strlen(const char *s);
 t_map				*ft_resize_map(t_map *old);
+void				ft_putendl(char const *s);
+void				ft_putstr(char const *s);
 void				ft_print_map(t_map *map);
-char				*ft_resolve(t_piece *pieces, int *nb_pieces, char *map);
+void				ft_resolve(t_piece *pieces, t_map *map, int nb_pieces);
+void				ft_set_insertfunctions(int (*f[19])(t_map *, int, int));
+void				ft_set_clearfunctions(int (*f[19])(t_map *, int, int), \
+		t_map *map);
+
 #endif

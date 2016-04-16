@@ -6,7 +6,7 @@
 /*   By: knzeng-e <knzeng-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/03 17:31:16 by knzeng-e          #+#    #+#             */
-/*   Updated: 2016/04/14 20:29:56 by knzeng-e         ###   ########.fr       */
+/*   Updated: 2016/04/16 19:26:45 by knzeng-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ int	ft_check_square(t_tetro *tetro, t_piece *pieces)
 
 int	ft_check_line_and_square(t_tetro *tetro, t_piece *pieces)
 {
-	if (!(ft_check_line_vertic(tetro, pieces) || ft_check_line_horiz(tetro, pieces)))
+	if (!(ft_check_line_vertic(tetro, pieces) || \
+				ft_check_line_horiz(tetro, pieces)))
 		return (ft_check_square(tetro, pieces));
 	return (1);
 }
