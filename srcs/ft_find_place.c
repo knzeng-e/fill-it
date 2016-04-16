@@ -6,7 +6,7 @@
 /*   By: knzeng-e <knzeng-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/08 11:07:05 by knzeng-e          #+#    #+#             */
-/*   Updated: 2016/04/14 21:16:00 by knzeng-e         ###   ########.fr       */
+/*   Updated: 2016/04/16 01:06:06 by knzeng-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,31 @@
 
 t_map	*ft_resize_map(t_map *old)
 {
+	//int	i;
+	//int	j;
 	t_map	*new;
 
 	if (!(new = (t_map *)malloc(sizeof(t_map))))
 		return (NULL);
+	//ft_print_map(old);
+	//printf("\n");
 	new->size = old->size + 1;
-	ft_init_map(new, old->size + 1, 'A', old->begin_column, old->begin_column);
+	ft_init_map(new, old->size + 1, 'A', old->nb_pieces);
+	/*i = 0;
+	while (i < old->size)
+	{
+		j = 0;
+		while (j < old->size)
+		{
+			new->tab[i][j] = old->tab[i][j];
+			j++;
+		}
+		i++;
+	}
+	new->tab[i][++j] = '\0';*/
+//	printf("AFTER RESIZE\n");
+//	ft_print_map(new);
+	//printf("\n");
 	return (new);
 }
 
@@ -103,6 +122,9 @@ int		insert(t_piece *piece, t_map *map, int *current_piece)
 {
 	int	i;
 	int	j;
+	int	ret;
+
+
 
 	if (piece->forme == END)
 		return (GAME_OVER);
@@ -112,15 +134,19 @@ int		insert(t_piece *piece, t_map *map, int *current_piece)
 		j = 0;
 		while (j < map->size)
 		{
-			if (ft_put_in_map(i, j, piece, map))
+			if ((ret = ft_put_in_map(i, j, piece, map)))
 			{
 				*current_piece = *current_piece + 1;
-				piece->x = i;
-				piece->y = j;
+				//piece->x = i;
+				//piece->y = j;
 				if (insert(piece + 1, map, current_piece))
 					return (1);
 				else
 				{
+					//printf("before\n");
+					//ft_print_map(map);
+					//printf("\n");
+					*current_piece = *current_piece - 1;
 					map->clear = 1;
 					ft_put_in_map(i, j, piece, map);
 				}

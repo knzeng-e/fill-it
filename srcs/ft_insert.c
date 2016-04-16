@@ -6,7 +6,7 @@
 /*   By: knzeng-e <knzeng-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/08 18:20:21 by knzeng-e          #+#    #+#             */
-/*   Updated: 2016/04/14 20:50:55 by knzeng-e         ###   ########.fr       */
+/*   Updated: 2016/04/16 01:53:59 by knzeng-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ int	ft_insert_lvertic_up_right(t_map *map, int line, int col)
 		return (0);
 	if ((map->tab[line][col] != '.') || (map->tab[line + 1][col] != '.') || (map->tab[line + 2][col] != '.') \
 			|| (map->tab[line + 2][col + 1] != '.'))
-		return(0);
+		return (0);
 	map->tab[line][col] = *(map->c);
 	map->tab[line + 1][col] = *(map->c);
 	map->tab[line + 2][col] = *(map->c);
@@ -260,9 +260,9 @@ int	ft_insert_zvertic_right(t_map *map, int line, int col)
 			|| (map->tab[line + 2][col + 1] != '.'))
 		return (0);
 	map->tab[line][col] = *(map->c);
-	map->tab[line + 2][col - 1] = *(map->c);
+	map->tab[line + 2][col + 1] = *(map->c);
 	map->tab[line + 1][col] = *(map->c);
-	map->tab[line + 1][col - 1] = *(map->c);
+	map->tab[line + 1][col + 1] = *(map->c);
 	(*map->c)++;
 	return (1);
 }

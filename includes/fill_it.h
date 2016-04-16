@@ -6,7 +6,7 @@
 /*   By: knzeng-e <knzeng-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/02 21:40:40 by knzeng-e          #+#    #+#             */
-/*   Updated: 2016/04/14 20:29:05 by knzeng-e         ###   ########.fr       */
+/*   Updated: 2016/04/16 01:59:49 by knzeng-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FILL_IT_H
 
 # include <sys/types.h>
-#include <sys/stat.h>
+# include <sys/stat.h>
 # include <fcntl.h>
 #include <stdlib.h>
 # include <unistd.h>
@@ -138,10 +138,10 @@ int					ft_init(t_map *map, int size_map, char c, int begin_line, \
 		int begin_column);
 int					ft_put_in_map(int line, int column, t_piece *piece, \
 		t_map *map);
-int					ft_init_map(t_map *map, int size_map, char c, int line, int col);
+int					ft_init_map(t_map *map, int size_map, char c, int
+		nb_pieces);
 int					insert(t_piece *piece, t_map *map, int *current_pos);
 t_map				*ft_resize_map(t_map *old);
 void				ft_print_map(t_map *map);
-//int					(*ft_put_forme)(t_forme, t_map *, int, int)[17];
 char				*ft_resolve(t_piece *pieces, int *nb_pieces, char *map);
 #endif
